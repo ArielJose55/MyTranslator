@@ -1,3 +1,8 @@
 build/
 dist/
 test/
+bin/
+\.gradle
+\.project
+\.classpath
+gradle/
