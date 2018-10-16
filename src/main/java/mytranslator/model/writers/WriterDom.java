@@ -11,6 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import mytranslator.model.logic.Word;
 import org.jdom2.Element;
@@ -46,14 +48,23 @@ public class WriterDom {
                 wordXml.addContent(new Element("_translations_").setText(main.toLowerCase()));
             });
             root.addContent(wordXml);
-            
+            FileOutputStream fileOut = null;
             try {
-                writer.output(document, new FileOutputStream(file));
+            	fileOut = new FileOutputStream(file);
+                writer.output(document, fileOut);
             } catch (IOException ex) {
                 Logger.getLogger(WriterDom.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }finally {
+				if(fileOut != null) {
+					try {
+						fileOut.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
             
         };
-        new Thread(run).start();
+        SwingUtilities.invokeLater(run);
     }
 }

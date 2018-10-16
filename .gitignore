@@ -1,8 +1,8 @@
 build/
 dist/
-test/
 bin/
 \.gradle
+\.settings
 \.project
 \.classpath
-gradle/
+
