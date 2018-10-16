@@ -5,12 +5,8 @@
  */
 package mytranslator.view.frames;
 
-import com.sun.javafx.binding.SelectBinding;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
 import java.awt.HeadlessException;
-import mytranslator.view.IFrame;
-import mytranslator.view.panels.PanelWork;
 
 /**
  *

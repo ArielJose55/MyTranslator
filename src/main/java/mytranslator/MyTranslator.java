@@ -85,7 +85,5 @@ public class MyTranslator implements NativeKeyListener, WindowFocusListener{
             mainFrame.setVisible(false);
             mainFrame = null;
         }
-        if(mainFrame == null)
-            JOptionPane.showMessageDialog(null, "Hola MAma");
     }
 }
