@@ -26,7 +26,10 @@ public class MyTranslator implements NativeKeyListener, WindowFocusListener{
     private static MainFrame mainFrame = null;
 
     public static void main(String args[]) {
-    
+    	
+    	Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+        logger.setLevel(Level.OFF);
+    	
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {

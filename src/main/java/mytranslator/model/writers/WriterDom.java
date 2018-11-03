@@ -9,12 +9,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
+
+import mytranslator.model.logic.Dom;
 import mytranslator.model.logic.Word;
+
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
@@ -42,7 +50,7 @@ public class WriterDom {
         XMLOutputter writer = new XMLOutputter(Format.getPrettyFormat());
         
         Runnable run = ()->{
-            Element wordXml = new Element(word.getWord().toLowerCase());
+            Element wordXml = createElement(word.getWord().toLowerCase());
             
             word.getTranslations().forEach((main) -> {
                 wordXml.addContent(new Element("_translations_").setText(main.toLowerCase()));
@@ -67,4 +75,43 @@ public class WriterDom {
         };
         SwingUtilities.invokeLater(run);
     }
+    
+    private static Element createElement(String chain) {
+    	String wordTemp, word;
+    	wordTemp = word = chain.contains(" ") ? chain.replace(" ", "_") : chain;
+    	StringBuilder sb = new StringBuilder();
+
+    	for(Character ch : Dom.CHARS_VALIDED) {
+    		
+    		boolean contains = false;
+    		StringBuilder sbchar = new StringBuilder(ch+"-");
+    		
+    		for(int i = 0; i < wordTemp.length(); i++) {
+    			if(wordTemp.charAt(i) == ch) {
+    				sbchar.append(i);
+    				sbchar.append(",");
+        			contains = true;
+        		}
+    		}
+    		if(contains) {
+    			sb.append(sbchar.substring(0, sbchar.length() - 1));
+    			sb.append(":");
+    			word = wordTemp.replace(ch, '_');
+    			wordTemp = word;
+    		}
+    	}
+    	
+    	Element element = new Element(word);
+    	
+    	if(sb.length() > 0){
+    		Attribute attribute = new Attribute("esp", sb.substring(0, sb.length() - 1));
+    		element.setAttribute(attribute);
+    	}
+    	
+    	return element;
+    }
+    
+   
+    
+    
 }

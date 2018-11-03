@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <_words_>
-  <hello>
-    <_translations_>hola</_translations_>
-  </hello>
+  <we_ll_adding esp="'-2">
+    <_translations_>añadiremos</_translations_>
+  </we_ll_adding>
+  <we_ll_can_t_run esp="'-2,9">
+    <_translations_>no podemos correr</_translations_>
+  </we_ll_can_t_run>
 </_words_>
