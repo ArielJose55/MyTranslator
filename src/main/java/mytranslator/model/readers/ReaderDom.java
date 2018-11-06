@@ -76,8 +76,9 @@ public class ReaderDom {
     	String[] values = attibute.split(":");
     	
     	for(String value : values) {
-    		char character = value.split("-")[0].charAt(0);
-    		String[] numbers = value.split("-")[1].split(",");
+    		char character = value.charAt(0);
+    		String matches = value.substring(1, value.length());
+    		String[] numbers = matches.split(",");
     		for(String number: numbers) {
     			int i = Integer.parseInt(number);
     			characters[i] = character;

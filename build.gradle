@@ -35,7 +35,7 @@ task copyToLib(type: Copy) {
 }
 
 task copyToJar(type: Copy) { 
-    into "$buildDir/output" 
+    into "C:/Users/ariel.arnedo/Documents/Add-in Express/MyTranslator" 
     from "$buildDir/libs" 
 } 
 

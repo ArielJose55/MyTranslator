@@ -84,7 +84,7 @@ public class WriterDom {
     	for(Character ch : Dom.CHARS_VALIDED) {
     		
     		boolean contains = false;
-    		StringBuilder sbchar = new StringBuilder(ch+"-");
+    		StringBuilder sbchar = new StringBuilder(ch.toString());
     		
     		for(int i = 0; i < wordTemp.length(); i++) {
     			if(wordTemp.charAt(i) == ch) {
